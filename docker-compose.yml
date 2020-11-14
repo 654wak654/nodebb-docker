@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+    nodebb:
+        container_name: nodebb
+        build: .
+        restart: always
+        ports:
+            - 4567:4567
+        volumes:
+            - nodebb-files:/opt/nodebb/public/uploads
+            - nodebb-config:/etc/nodebb
+        links:
+            - mongodb
+        depends_on:
+            - mongodb
+        networks:
+            - net-nodebb
+
+    mongodb:
+        container_name: mongodb
+        image: bitnami/mongodb:latest
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: 1q2w3e4r
+            MONGO_INITDB_DATABASE: admin
+        ports:
+            - 27017:27017
+        volumes:
+            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+        networks:
+            - net-nodebb
+
+networks:
+    net-nodebb:
+        driver: bridge
+
+volumes:
+    nodebb-files:
+        name: nodebb-files
+    nodebb-config:
+        name: nodebb-config
