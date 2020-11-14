@@ -18,5 +18,5 @@ ENV NODE_ENV=production \
 WORKDIR /opt/nodebb
 EXPOSE 4567
 VOLUME ["/etc/nodebb", "/opt/nodebb/public/uploads"]
-ENTRYPOINT ["sh"]
+ENTRYPOINT ["ash"]
 CMD ["/supervisor.sh"]

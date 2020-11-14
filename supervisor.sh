@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/ash
 
 shutdown() {
     echo "Shutting down."
