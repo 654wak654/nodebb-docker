@@ -27,6 +27,7 @@ services:
             - 27017:27017
         volumes:
             - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+            # TODO: Use the 'nodebb-data' volume for mongo's data
         networks:
             - net-nodebb
 
@@ -39,3 +40,5 @@ volumes:
         name: nodebb-files
     nodebb-config:
         name: nodebb-config
+    nodebb-data:
+        name: nodebb-data
