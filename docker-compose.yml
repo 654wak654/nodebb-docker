@@ -10,8 +10,6 @@ services:
         volumes:
             - nodebb-files:/opt/nodebb/public/uploads
             - nodebb-config:/etc/nodebb
-        links:
-            - mongodb
         depends_on:
             - mongodb
         networks:
