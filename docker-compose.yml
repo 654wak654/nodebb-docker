@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.7'
 
 services:
     nodebb:
@@ -21,13 +21,13 @@ services:
         restart: always
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: 1q2w3e4r
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
             MONGO_INITDB_DATABASE: admin
         ports:
             - 27017:27017
         volumes:
-            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-            # TODO: Use the 'nodebb-data' volume for mongo's data
+            - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
+            - nodebb-data:/bitnami/mongodb
         networks:
             - net-nodebb
 
