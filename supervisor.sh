@@ -1,15 +1,15 @@
-#!/bin/bash
+#!/bin/ash
 
 shutdown() {
-    echo 'Shutting down.'
+    echo "Shutting down."
     ./nodebb stop
     [ -e /etc/nodebb/config.json ] || cp /opt/nodebb/config.json /etc/nodebb/config.json
-    echo 'Stopped'
+    echo "Stopped"
     exit 143;
 }
 
 term_handler() {
-    echo 'SIGTERM received'
+    echo "SIGTERM received"
     shutdown
 }
 
@@ -21,5 +21,5 @@ cd /opt/nodebb/
 # NOT recommended without setting up backups
 # [ -e /etc/nodebb/config.json ] && yes n | ./nodebb upgrade
 node app.js & wait ${!}
-echo 'NodeBB died'
+echo "NodeBB died"
 shutdown

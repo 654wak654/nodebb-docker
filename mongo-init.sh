@@ -5,12 +5,12 @@ mongo <<EOF
 use admin
 
 db.createUser({
-    user: 'admin',
-    pwd: '$MONGO_INITDB_ROOT_PASSWORD',
+    user: "admin",
+    pwd: "$MONGO_INITDB_ROOT_PASSWORD",
     roles: [
         {
-            role: 'root',
-            db: 'admin'
+            role: "root",
+            db: "admin"
         }
     ]
 })
@@ -18,16 +18,16 @@ db.createUser({
 use nodebb
 
 db.createUser({
-    user: 'nodebb',
-    pwd: '$MONGO_INITDB_ROOT_PASSWORD',
+    user: "nodebb",
+    pwd: "$MONGO_INITDB_ROOT_PASSWORD",
     roles: [
         {
-            role: 'readWrite',
-            db: 'nodebb'
+            role: "readWrite",
+            db: "nodebb"
         },
         {
-            role: 'clusterMonitor',
-            db: 'admin'
+            role: "clusterMonitor",
+            db: "admin"
         }
     ]
 })
