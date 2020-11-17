@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/bash
 set -e
 
 mongo <<EOF
@@ -6,7 +6,7 @@ use admin
 
 db.createUser({
     user: 'admin',
-    pwd: '$MONGO_PASSWORD',
+    pwd: '$MONGO_INITDB_ROOT_PASSWORD',
     roles: [
         {
             role: 'root',
@@ -19,7 +19,7 @@ use nodebb
 
 db.createUser({
     user: 'nodebb',
-    pwd: '$MONGO_PASSWORD',
+    pwd: '$MONGO_INITDB_ROOT_PASSWORD',
     roles: [
         {
             role: 'readWrite',

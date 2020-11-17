@@ -1,4 +1,4 @@
-FROM node:14-alpine AS build
+FROM node:lts-alpine AS build
 
 RUN apk add --no-cache git \
     && cd /opt \
@@ -8,7 +8,7 @@ RUN apk add --no-cache git \
     && ./nodebb setup
 
 
-FROM node:14-alpine
+FROM node:lts-alpine
 
 ADD ./supervisor.sh /
 RUN chmod +x /supervisor.sh \
